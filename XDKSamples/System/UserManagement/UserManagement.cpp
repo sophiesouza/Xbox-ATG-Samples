@@ -370,7 +370,7 @@ void Sample::Update(DX::StepTimer const&)
 					for (auto member : partyMembers)
 					{
 						auto xuid = member->XboxUserId;
-						m_console->Format(Colors::Lime, L"Active User set to %ls\n", xuid);
+						m_console->Format(Colors::Lime, L"Party Member id: %ls\n", xuid);
 					}
 				}
 				else
