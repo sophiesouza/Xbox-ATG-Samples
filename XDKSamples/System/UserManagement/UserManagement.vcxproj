@@ -157,7 +157,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir);..\..\..\Kits\DirectXTK\Inc;..\..\..\Kits\ATGTK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>$(Console_SdkPackagesRoot);$(Console_SdkWindowsMetadataPath);%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>C:/Program Files (x86)/Microsoft SDKs/Durango.180716/v8.0/references/commonconfiguration/neutral/;C:/Program Files (x86)/Microsoft Durango XDK/180704/xdk/VS2017/vc/platform/amd64/;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;__WRL_NO_DEFAULT_LIB__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -215,6 +215,9 @@
     <None Include="UserManagement_Readme_ja-jp.docx" />
     <None Include="UserManagement_Readme_ko-kr.docx" />
     <None Include="UserManagement_Readme_zh-cn.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Xbox Services API, Version=8.0" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

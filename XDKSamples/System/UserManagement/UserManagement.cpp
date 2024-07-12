@@ -10,6 +10,7 @@
 
 #include "ATGColors.h"
 #include "ControllerFont.h"
+#include <ppltasks.h>
 
 extern void ExitSample() noexcept;
 
@@ -17,6 +18,8 @@ using namespace DirectX;
 using namespace Windows::Foundation;
 using namespace Windows::Xbox::Input; // contains Controller class
 using namespace Windows::Xbox::System; // contains User class
+using namespace Windows::Xbox::Multiplayer;
+using namespace concurrency;
 
 using Microsoft::WRL::ComPtr;
 
@@ -356,6 +359,25 @@ void Sample::Update(DX::StepTimer const&)
                     m_signOutDeferralTimeInSeconds++;
                 }
             }
+			else if (m_gamePadButtons[i].rightShoulder == GamePad::ButtonStateTracker::PRESSED)
+			{
+				auto partyChatOp = PartyChat::GetPartyChatViewAsync();
+				auto partyChatTask = create_task(partyChatOp);
+				auto partyChatView = partyChatTask.get();
+				if (partyChatView != nullptr)
+				{
+					auto partyMembers = partyChatView->Members;
+					for (auto member : partyMembers)
+					{
+						auto xuid = member->XboxUserId;
+						m_console->Format(Colors::Lime, L"Active User set to %ls\n", xuid);
+					}
+				}
+				else
+				{
+					m_console->Format(Colors::Lime, L"Current party chat view is null.\n");
+				}
+			}
         }
         else
         {
